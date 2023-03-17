@@ -8,5 +8,7 @@ url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appi
 
 response = requests.get(url)
 
-# print(response)
+data_json = response.json()
+
+print(data_json)
 
