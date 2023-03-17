@@ -8,7 +8,9 @@ url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appi
 
 response = requests.get(url)
 
-data_json = response.json()
+if response == 200:
+    data == response.json()
+else:
+    print("An error has ocurred")
 
-print(data_json)
 
