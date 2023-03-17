@@ -8,8 +8,12 @@ url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appi
 
 response = requests.get(url)
 
-if response == 200:
-    data == response.json()
+if response.status_code == 200:
+    data = response.json()
+    weather = data['weather'][0]['description']
+    temperature = round(data['main']["temp"] - 273.15, 2) # kelvin to celsius
+    print("Weather:", weather)
+    print("Temperature:", temperature, "celsius")
 else:
     print("An error has ocurred")
 
