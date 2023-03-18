@@ -4,12 +4,19 @@ import requests
 API_KEY = "508ea5b6ada26fb9a2cbb16579af96c9"
 lat, lon = ["-16.707881", "-70.584655"]
 
-# read files txt
+# Read files txt
 with open("./coordinates.txt") as file:
-    content = file.readlines()
+    locations = file.readlines()
     
+# Get coordinates from content
+locations .pop(0)
 
-# read API
+print(locations)
+for n in range(len(locations)):
+    print(n+1, ":", locations[2])
+# location = input("content")
+
+# Read API
 url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
 
 response = requests.get(url)
