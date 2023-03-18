@@ -16,22 +16,25 @@ for n in range(len(locations)):
     print(n+1, locations[n][2], sep=":")
 
 # User choose one option
-index = int(input("\nChoose one location: ")) - 1
-lat, lon, loc = float(locations[index][0]), float(locations[index][1]), locations[index][2]
+try: 
+    index = int(input("\nChoose one location: ")) - 1
+    lat, lon, loc = float(locations[index][0]), float(locations[index][1]), locations[index][2]
+    # Read API
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
 
-# Read API
-url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+    response = requests.get(url)
 
-response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        weather = data['weather'][0]['description']
+        temperature = round(data['main']["temp"] - 273.15, 2) # kelvin to celsius
+        print("\nLocation:", loc)
+        print("Weather:", weather)
+        print("Temperature:", temperature, "celsius")
+    else:
+        print("\nAn error has ocurred")
+except: 
+    print("Input a number that shows in the list.")
 
-if response.status_code == 200:
-    data = response.json()
-    weather = data['weather'][0]['description']
-    temperature = round(data['main']["temp"] - 273.15, 2) # kelvin to celsius
-    print("\nLocation:", loc)
-    print("Weather:", weather)
-    print("Temperature:", temperature, "celsius")
-else:
-    print("\nAn error has ocurred")
 
 
