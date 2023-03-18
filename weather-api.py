@@ -9,7 +9,7 @@ with open("./coordinates.txt") as file:
     locations = file.readlines()
     
 # Get coordinates from content
-locations .pop(0)
+locations.pop(0)
 
 print(locations)
 for n in range(len(locations)):
