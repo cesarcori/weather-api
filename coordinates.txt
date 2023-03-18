@@ -1,0 +1,4 @@
+latitud, longitude, location_name
+-16.795036, -68.010915, Mecapaca
+-3.776672, -66.969763, Jurua
+-8.512668, -76.766109, Shunte
